@@ -100,10 +100,9 @@ function flipbook1_preprocess_node(&$variables) {
 
 
 function flipbook1_preprocess_html(&$variables) {
-  // If on an individual node page, add the node type to body classes.
   if ($node = menu_get_object()) {
-    if (isset($node->field_favicon['und'][0]['filename'])){
-      $variables['favicon'] = $node->field_favicon['und'][0]['filename'];
+    if (isset($node->field_favicons['und'][0]['node'])){
+      $variables['favicon'] = $node->field_favicons['und'][0]['node']->field_favicon['und'][0]['filename'];
     }
     
     if (isset($node->field_css_override['und'][0]['filename'])){
