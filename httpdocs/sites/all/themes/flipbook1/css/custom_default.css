@@ -1,0 +1,937 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+/* place web font source URLs at the very top of the style sheet */
+
+
+/* --- TABLE OF CONTENTS ----------------------------------- 
+
+		• MENU NAVIGATION COMPONENTS
+			- Menu Slide-Out Panel
+			- Table of Contents (TOC) Button
+			- Arrow Navigation Buttons
+			– FONT-AWESOME (Arrow Chevrons)
+		
+		• LAYOUT STRUCTURE
+			- Masthead Elements
+			- Featured "Hero & Mini" Headers									
+			- Body Content Area
+			- Transparent Fade-out Body Content
+			- 2-Column Page Layout Components
+		
+		• TYPOGRAPHY
+			- @fontface
+			- Header styles
+			- List styles
+			- MISC. styles
+			- Font Styling for Featured "Hero & Mini" Headers
+		
+		• RIGHT-RAIL MODULES
+			- ModuleStyle-1 Hyperlink Styles
+			- Image Links & Video Embeds
+		
+		• !!!TESTING AREA ONLY!!!
+			
+		• RESPONSIVE STYLES
+		
+------------------------------------------------------------*/
+
+
+/* ****************************************************************
+	"Flipbook" is based on the "BookBlock" framework by Codedrops: 
+	http://tympanus.net/codrops
+***************************************************************** */
+
+
+
+html { height: 100%; }
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	background: #fff;
+	font-weight: 400;
+	font-size: 100%;
+	color: #333;
+	height: 100%;
+}
+
+.js body { overflow: hidden; }
+
+
+		
+/************************************
+	LAYOUT STRUCTURE
+************************************/
+
+
+.container,
+.bb-custom-wrapper,
+.bb-bookblock { width: 100%; height: 100%; }
+
+.container {
+	position: relative;
+	left: 0px;
+	-webkit-transition: left 0.3s ease-in-out;
+	-o-transition: left 0.3s ease-in-out;
+	transition: left 0.3s ease-in-out;
+	}
+
+.slideRight { left: -240px; }
+
+.no-js .container { padding-right: 240px; }
+
+
+
+
+/************************************
+	MENU NAVIGATION COMPONENTS
+************************************/
+
+
+/* ------- Menu Slide-Out Panel ------- */
+
+.menu-panel {
+	background: #2e5c9b; /* orginal: #f1103a */
+	margin: 0 auto; /* keeps the layer centered at full width */
+	overflow-y: auto;
+	position: fixed;
+	top: 0; right: 0;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	width: 240px; height: 100%;
+	z-index: 1000;
+	}
+
+.js .menu-panel { position: absolute; right: -240px; }
+
+.menu-panel h3 {
+	font-size: 1.8em;
+	padding: 20px;
+	font-weight: 300;
+	color: #113f69;
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
+	} 
+
+.menu-toc { 
+	border-top: 1px solid #1c4b88;
+	list-style: none; 
+	}
+
+.menu-toc li a {
+	display: block;
+	color: #fff;
+	font-size: 1.1em;
+	line-height: 1.25;
+	padding: 20px;
+	cursor: pointer;
+	background: #2e5c9b; /* orginal: #f1103a */
+	border-bottom: 1px solid #1c4b88; /* orginal: #dd1338 */
+	}
+
+.menu-toc li a:hover,
+.menu-toc li.menu-toc-current a {
+	background: #1c4b88 /* orginal: #dd1338 */;
+	}
+
+.menu-panel div { margin-top: 20px; }
+
+.menu-panel div a {
+	text-transform: uppercase;
+	font-size: 0.7em;
+	line-height: 1;
+	padding: 5px 20px;
+	display: block;
+	border: none;
+	color: #bc0b0b;
+	letter-spacing: 1px;
+	font-weight: 800;
+	text-shadow: 0 1px rgba(255,255,255,0.2);
+	} 
+
+.menu-panel div a:hover {
+	background: inherit;
+	color: #fff;
+	text-shadow: none;
+	}
+
+.bb-custom-wrapper nav,
+#masthead nav {
+	top: 14px;
+	right: 100px;
+	position: absolute;
+	z-index: 2000;
+	}
+
+.bb-custom-wrapper nav span,
+#masthead nav span {
+	background: DarkGrey;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	line-height: 30px;
+	position: absolute;
+	top: 0; left: 0;
+	speak: none;
+	text-align: center;
+	width: 32px; height: 32px;
+	}
+
+.bb-custom-wrapper nav span:hover,
+#masthead nav span:hover,
+.menu-button:hover {
+	background: DimGrey;
+	}
+
+.bb-custom-wrapper nav span:last-child,
+#masthead nav span:last-child  { left: 40px; } 
+
+
+
+/* ------- Table of Contents (TOC) Button ------- */
+
+.menu-button {
+	background: DarkGrey;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	line-height: 30px;
+	position: absolute;
+	speak: none;
+	text-align: center;
+	text-indent: -9000px;
+	top: 18px; right: 20px;
+	width: 32px; height: 32px;
+	z-index: 3000;
+	}
+
+.menu-button:after {
+	background: #fff;
+	box-shadow: 0 -4px #fff, 0 4px #fff;
+	content: '';
+	margin-top: -1px;
+	position: absolute;
+	top: 50%; left: 25%;
+	width: 50%; height: 2px;
+	}
+
+.no-js .bb-custom-wrapper nav span,
+.no-js #masthead nav span,
+.no-js .menu-button { 
+	display: none; 
+	}
+
+
+
+/* ------- Arrow Navigation Buttons ------- */
+
+.arrow_nav { 
+	/* float: right; */
+	position: relative;
+	top: 18px !important; 
+	/* right: ; */
+	z-index: 2500;
+	}
+
+.arrow_nav span {
+	border-radius: 50%;
+	color: #0094ba;
+	cursor: pointer;
+	font-weight: bold;
+	line-height: 30px;
+	position: absolute; 
+	top: -5px; left: 0;
+	speak: none;
+	text-align: center;
+	width: 32px; height: 32px;
+	}
+	
+.arrow_nav span:last-child { left: 40px; }	
+		
+.no-js .arrow_nav { display: none; } /* hides the menu-button if JavaScript isn't enabled */
+
+
+
+/* ------- FONT-AWESOME (Arrow Chevrons, optional) ------- */
+
+.fa-chevron-circle-left:before,
+.fa-chevron-circle-right:before {
+	color: white;
+	font-size: 2.3em; 
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	position: relative; top: 1px;
+	text-decoration: inherit;
+	/* text-shadow: 1px 1px 1px #ccc, -1px -1px 1px #999; */
+	}
+
+.fa-chevron-circle-left,
+.fa-chevron-circle-right { opacity:0.2; filter:alpha(opacity=20);  /* For IE8 and earlier */ }
+
+.fa-chevron-circle-left:hover,
+.fa-chevron-circle-right:hover { opacity:0.4; filter:alpha(opacity=40);  /* For IE8 and earlier */ }
+
+
+
+
+/************************************
+	LAYOUT STRUCTURE
+************************************/
+
+
+/* ------ Masthead Elements ------ */
+
+#masthead {
+	background-size: 210px auto; /* rescales bg image to look sharper for iPhone/iPad hi-rez displays */
+	
+	margin: 0 auto; /* 5% or use "auto" to center the layer */
+	position: relative;
+	padding: 11px 0px 0px; 
+	text-align: left;
+	width: 974px; 
+	height: 69px; /* spacing compliment for hero/mini header's start point from top */
+	/* using "width px" = flush right-side perfectly with the last main-nav */
+	/* using "width %" = keeps both left & right margins evenly scaled relative to the browser's width */
+	z-index: 2000;
+	}
+	
+.logo { width: auto; height: 36px; margin: 0; padding: 0; position: relative; top: 4px; }
+
+.logo-menu { padding: 10px 0 0 20px; width: 102px; height: auto; }
+
+.bg-header {
+	background: #FFFFFF; /* defines the BG color for the entire masthead area */
+	border-bottom: 1px #c5c5c5 solid; /* optional keyline */
+	position: absolute;
+	top: 0;
+	width: 100%; height: 69px; /* double check that this height aligns properly with the "menu-toc" BG */
+	z-index: 500;
+	}
+
+/* optional BG gradient for MASTHEAD area 	
+.bg-header {
+	background: #d2d2d2;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #FFFFFF),
+		color-stop(1, #d2d2d2)
+	);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #d2d2d2 100%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #d2d2d2 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #d2d2d2 100%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #d2d2d2 100%);
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #d2d2d2 100%);
+	}*/
+
+
+
+/* ------- Featured "Hero & Mini" Headers ------- */
+
+.featured_header_hero,
+.featured_header_mini { 
+	background: #e7f5ff;
+	border-bottom: 1px solid #EAEAEA;
+	margin: 0;				
+	padding: 0;
+	width: 100%;
+	}
+	
+/* optional BG gradient treatment 
+.featured_header_hero { 
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #FFFFFF),
+		color-stop(1, #e7f5ff)
+	);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #e7f5ff 100%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #e7f5ff 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #e7f5ff 100%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #e7f5ff 100%);
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #e7f5ff 100%);
+	}*/
+
+.featured_header_mini { background: #e7f5ff; }	/* change this if you want a diffrent BG color for the mini-header */
+
+.fh_wrap { margin: 0 auto; width: 974px; }
+			
+.fh_hero {
+	background-image: url("../img/CLIENT-SPECIFIC-IMAGES__rename-to-brand/header_hero_vmware_datacenter.png");
+	background-repeat: no-repeat;
+	background-size: 424px 190px;
+	background-position: 490px 0px;
+	display: table;
+	height: 190px;
+	padding: 0 5% 0;
+
+	}
+
+.fh_mini { display: none; height: 65px; }
+
+.fh_hero span,
+.fh_mini span {
+	display: table-cell;
+	vertical-align: middle;
+	}
+
+
+
+/* ------- Body Content Area ------- */
+
+.body_content_wrap { padding-top: 10px; }
+
+.content { padding-bottom: 65px; }
+
+.js .content {
+	overflow: hidden;
+	position: absolute;
+	top: 0px; /* adjusts the space between the top of the body area and the bottom of the main-nav system (masthead area) */
+	left: 0; 
+	bottom: 50px;
+	width: 100%;	
+	-webkit-font-smoothing: subpixel-antialiased;
+	}
+
+.scroller { padding: 10px 5%; }
+
+
+
+/* ------- Transparent Fade-out for Body Content ------- */
+
+/*.js .content:before,*/
+.js .content:after {
+	content: '';
+	pointer-events: none;
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 40px;
+	z-index: 100;
+	}
+
+.js .content:before {
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	
+	height: 20px;
+	}
+
+.js .content:after {
+	top: auto;
+	bottom: 19px;
+
+	background: -webkit-linear-gradient(bottom, rgba(225,225,225,1) 0%, rgba(225,225,225,0) 100%);
+	background: -moz-linear-gradient(bottom, rgba(225,225,225,1) 0%, rgba(225,225,225,0) 100%);
+	background: -o-linear-gradient(bottom, rgba(225,225,225,1) 0%, rgba(225,225,225,0) 100%);
+	background: linear-gradient(to top, rgba(225,225,225,1) 0%, rgba(225,225,225,0) 100%);
+	}
+	
+	
+
+/* ------- 2-Column Page Layout Components ------- */
+
+.left-column,
+.right-column { width: 50%; } 
+
+.left-column { 
+	float: left;
+	padding-right: 2.5%; /* 2.5% or 5% ??? see 1st responsive tier 1025px */
+	}
+
+.right-column { 
+	float: right;
+	padding-left: 3.5%;
+	padding-top: 34px;
+	}
+
+
+
+
+/************************************
+	TYPOGRAPHY
+************************************/
+
+
+a { color: #1878d1; text-decoration: none; outline: none; }
+a:hover { color: #1968b2; }
+
+/* this styles only the body area text links hover state; comment out to disable */
+.content a:hover { text-decoration: underline; }
+
+
+.no-js .content h2 { padding: 40px 1% 20px; }
+
+.content p {
+	color: #555555;
+	font-size: 1.1em;
+	line-height: 1.4em; 
+	margin: 0 0 1em;
+	/*padding: 5px 0 0 10%;  modify this to adjust side margins WITHIN the content layer */
+	text-align: left;
+	text-indent: 0em;
+	}
+
+
+/* ------- Header Styles ------- */
+
+h1, h2, h3, h4, h5, h6 {
+	color: #555555; 
+	font-family: "Proxima-Nova SemiBold", Helvetica, Arial, sans-serif;
+	/*font-weight: ; */
+	line-height: 1.25em; 
+	padding: 0.75em 0 1.25em;
+	text-align: left;
+	}
+
+/* set in "ems" for optimial scalibity, especially for mobile devices; it's pixel equlivent is denoted to the right, based on a standard 16px base web-browser pixel size */ 
+h1 { font-size: 2.350em; /* 36px */ }	
+h2 { font-size: 1.400em; /* 24px */ }
+h3 { font-size: 1.313em; /* 21px */}
+h4 { font-size: 1.125em; /* 18px */ }
+h5 { font-size: 0.930em; /* 15px */ }
+h6 { font-size: 0.750em; /* 12px */ }
+
+
+.content h2 { font-size: 1.700em; font-weight: bold; }
+
+
+/* styles the margin space for all the headers */
+.content h1, .left-column h1, 
+.content h2, .left-column h2, 
+.content h3, .left-column h3, 
+.content h4, .left-column h4, 
+.content h5, .left-column h5, 
+.content h6, .left-column h6 { margin: 0.25em 0 0em; }
+
+
+
+/* ------- List Styles ------- */
+
+.content ol,
+.content ul { 
+	font-size: 1em;
+	font-style: normal;
+	line-height: 1.1em;
+	list-style-position: outside;
+	margin: 1.5em 0;
+	padding-right: 2em;
+	position: relative;
+	left: 40px;
+ 	}
+.content ol li, 
+.content ul li { color: #333; margin-bottom: 0.7em; }
+
+.right-column ol,
+.right-column ul { 
+	font-size: 0.9em; 
+	}
+.right-column ol li, 
+.right-column ul li {
+	color: DimGray;
+	}
+	
+/* bullet marker styles for nested lists */
+ul { list-style-type: disc; }
+ul ul { list-style-type: circle; }
+ul ul ul { list-style-type: square; }
+ul ul ul ul { list-style-type: disc; }
+
+ol { list-style-type: decimal; }
+ol ol { list-style-type: upper-alpha; }
+ol ol ol { list-style-type: upper-roman; }
+ol ol ol ol { list-style-type: lower-alpha; }
+ol ol ol ol ol { list-style-type: lower-roman; }	
+
+/* global margins for nested list sets */
+ol ol, ul ul, 
+ol ol ol, ul ul ul,
+ol ol ol ol, ul ul ul ul { margin-top: 0.65em; }
+
+
+
+/* ------- MISC. styles ------- */
+
+blockquote {
+	color: SteelBlue;
+	font-size: 1.4em;
+	font-style:italic;
+	font-weight: bold;
+	line-height: 1.1em;
+	margin: 1.25em 0 1em;
+	text-shadow: 1px 1px #F1F3F5;
+	}
+
+cite { text-transform: capitalize; font-size: 0.75em; color: #999; }
+
+q { font-style:italic; }
+
+code {
+	background: Gainsboro;
+	border-radius: 4px;
+	color: white;
+	font: normal 85%/1.1em monospace, "Century Gothic", Tahoma, Cambria, "Courier New", Courier, monospace;
+	padding: 0 0.25em;
+	}
+
+pre code {
+	background: #f2f1a9 url(../img/line-bg.png) 0 7px;
+	border: 1px solid #e8e3b8;
+	border-bottom: 1px solid #d9d4a8;
+	clear: both;
+	color: DarkGoldenRod;
+	display: block;
+	font-size: 80%;
+	line-height: 140%;
+	overflow-x: auto;
+	padding: 2% 2.5%;
+	margin: 0;
+	width: 95%;
+	}
+
+del { color: DarkGray; }
+
+big { font-size: 125%; }
+	
+small { 
+	font-size: 70%; 
+	font-style: italic; 
+	line-height: 0.5em;
+	}
+
+sub, sup {
+	font-size: 85%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+	}
+sub { bottom: -0.25em; }
+sup { top: -0.3em; }
+
+
+/* these styles are hyper-specific for the body content area only; optional to modify */
+.content p em { }
+.content p strong { }
+
+
+
+/* ------- Font Styling for Featured "Hero & Mini" Headers ------- */
+/* ------- Font Styling for Featured "Hero & Mini" Headers ------- */
+/* ------- Font Styling for Featured "Hero & Mini" Headers ------- */
+
+.fh_hero h3,		
+.fh_hero p { 
+	text-shadow: 1px 1px 0px rgba(255,255,255,0.5); /* optional */
+	width: 450px;
+
+	}
+	
+.fh_hero h3 {
+	color: #0f4ea1;
+	font-size: 1.75em; 
+	letter-spacing: -0.01em; 
+	line-height: 1.2em;
+	padding: 0;
+	margin: 0;
+	width: 450px;
+	}	
+	
+.fh_hero p { 
+	color: #0f4ea1;
+	font-size: 0.9em; 
+	line-height: 1.2em; 
+	margin: 0;
+	padding-top: 0.75em; /* sets the distance between the headline & caption */
+	width: 410px;
+	}
+	
+.fh_mini span {
+	color: #0f4ea1;
+	padding: 0.8em 0;
+	} 
+
+
+
+/************************************
+	RIGHT-RAIL MODULES
+************************************/
+
+.module_wrap {
+	border-spacing: 0;
+	float: right;
+	margin: 0 0 0.85em;
+	padding: 0;
+	width: 100%;
+	}
+	
+.module_text_wrapper {
+	display: block;
+	float: left;
+	position: relative; top: 6px;
+	width: 70%;
+	}
+
+.module_icon {
+	float: left;
+	padding: 0 0 10px;
+	margin: 0 0.5em 0 0;
+	text-align: left;
+	width: 70px; height: auto;
+	}
+	
+.module_wrap h4 { /* this styles the box header titles, if present */
+	color: #999999;
+	font: normal 100%/1.25em "Proxima-Nova SemiBold", Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase; /* so you don't have to worry about being case-senstive on the HTML side */
+	}
+	
+/* Centralizes the styles of the right-rail body copy */ 
+.module_wrap p,
+.moduleStyle2 p,
+.moduleStyle3 p { 
+	font: normal 100%/1.125em "Proxima-Nova", Helvetica, Arial, sans-serif;
+	margin: 0.25em 0 1.25em;
+	vertical-align: top;
+	}	
+
+
+/* ------- ModuleStyle-1 Hyperlink Styles ------- */
+	
+.module_wrap p a:link,
+.module_wrap p a:visited {
+	color: #1896d1;
+	text-decoration: none;
+	}
+.module_wrap p a:hover,
+.module_wrap p a:active {
+	color: #096a8e;
+	text-decoration: none;
+	}
+	
+
+
+/* ------- Image Links & Video Embeds ------- */	
+
+.scrnsht { 
+	border: 1px solid LightGrey; 
+	margin-bottom: 2em;
+	width: 300px; height: auto;
+	}
+
+/* for IE 8 */ 
+@media \0screen {  
+	img { width: auto; } 
+	}
+
+.video {
+	margin: 0 0 40px;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 56.25%;
+	}
+	
+.video iframe,  
+.video object,  
+.video embed {
+	margin: 0 0 50px;
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	}
+	
+.shadow {
+	-moz-box-shadow: 1px 1px 12px LightSlateGray;
+	-webkit-box-shadow: 1px 1px 12px LightSlateGray;
+	box-shadow: 1px 1px 12px LightSlateGray;
+	}
+
+
+
+/**************************************************************
+	!!!TESTING AREA ONLY!!! (turn on/off as needed)
+************************************************************* 
+
+body { background: FloralWhite; }
+
+#masthead { background: Gainsboro; }
+.masthead_wrap { background: LightGrey; }
+.logo { background: LightSlateGray; }
+.bg-header { background-image: none;}
+
+.container { background: PaleGreen; }
+
+.menu-panel { background: DarkSalmon; }
+
+.scroller { background: LightSteelBlue; }
+
+.left-column { background: Lavender; }
+.right-column { background: LavenderBlush; } 
+
+.social_module { background: Gainsboro; }
+
+.module_wrap { background: Khaki; }
+.module_icon { background: PaleGreen; }
+.module_text_wrapper { background: SkyBlue; }
+
+.js .content:before,
+.js .content:after {	
+	background: -webkit-linear-gradient(top, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
+	background: -moz-linear-gradient(top, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
+	background: -o-linear-gradient(top, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
+	background: linear-gradient(to bottom, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);	
+	}
+.js .content:after {
+	background: -webkit-linear-gradient(bottom, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
+	background: -moz-linear-gradient(bottom, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
+	background: -o-linear-gradient(botxom, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
+	background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
+	}
+
+#featured_header_bg { background: HotPink; } 
+
+*/
+
+
+
+/************************************
+	RESPONSIVE STYLES
+************************************/
+
+
+/* specifically addressing arrow button alignment with TOC button */
+@media screen and (max-width: 1090px) {
+
+	.bb-custom-wrapper nav,
+	#masthead nav { right: 132px; }
+
+}
+
+
+/* 64.063em = 1025px -- Targeting Desktop screens and up */
+@media screen and (min-width: 64.063em) { 
+
+	.bb-custom-wrapper { width: 100%; }
+	
+	.bb-custom-wrapper
+	.body_content_wrap,
+	#masthead,
+	.fh_wrap { margin: 0 auto; }
+	
+	.body_content_wrap { width: 974px; }
+	
+	.body_content_wrap,
+	.fh_wrap { padding-left: 0; }
+	
+	/* set the left & right padding to "0" to make it evenly flushed with the header's current max-width */
+	.scroller { padding: 0; }
+	
+	.logo { padding: 0; }
+	
+}
+
+
+/* 1024px = 64.00em -- Targeting various tablet devices and desktop screens */
+@media screen and (max-width: 1024px) {
+
+	.scroller { padding: 0; }
+	
+	.body_content_wrap { width: 90%; margin: 0 auto; }
+	
+	.fh_hero { width: 100%; } 
+	.fh_mini { width: 90%; }
+	
+	/* .fh_hero h3,
+	.fh_hero p { left: 5%; } */
+	
+	.bb-custom-wrapper nav,
+	#masthead nav { right: 132px; }
+	
+	.logo { margin-left: 3.5%; }
+
+}
+
+/* 1024px = 64.00em -- specifically targeting iPads in landscape mode */
+@media only screen and (max-device-width : 1024px) and (orientation : landscape) {
+	
+	.logo { margin-left: 2.7%; } 
+
+}
+
+
+/* 980px = 61.25em -- universal breakpoint: layout columns & masthead */
+@media screen and (max-width: 980px) {
+
+	#masthead { width: 100%; }
+	
+	.logo { margin-left: 5%; } 
+	
+	/*controls spacing between the bottom of left-column and top of the right-column layers */
+	.left-column + .right-column { margin-top: 50px; }
+	
+}
+
+
+/* 768px = 48.00em -- universal breakpoint: begin wrapping the L&R columns underneath each other */
+@media screen and (max-width: 768px) {
+
+	.fh_hero { background-position: 340px 0px; }
+	.fh_hero p { width: 375px; }
+	
+	.left-column p { font-size: 1em; line-height: 1.4em; }
+
+}
+
+/* 768px = 48.00em -- specifically targeting iPads in landscape mode */
+@media only screen and (max-device-width : 768px) and (orientation : portrait) {
+	
+	.left-column + .right-column { margin-top: 0px; } 
+
+}
+
+
+/* 752px = 47.00em -- universal breakpoint to begin wrapping the L&R columns underneath each other */
+@media screen and (max-width: 752px) {
+
+	
+	.left-column, 
+	.right-column { float: none; width: 100%; }
+	
+	.fh_hero { height: 50px; }
+	
+	.fh_hero,
+	.fh_mini { background-image: none; }
+	
+	.fh_hero h3,
+	.fh_hero p,
+	.fh_mini p { width: 90%; }
+	
+	.fh_hero h3 { font-size: 125%; margin: 20px 0 10px; padding: 0; }
+	.fh_hero p { font-size: 95%; padding: 0 0 20px; }
+	
+}
+
+/* 400px = 25.00em -- for a variety of small mobile devices -- */
+@media screen and (max-width: 400px) {
+	
+	.menu-panel,
+	.content { font-size: 95%; }
+	
+	.fh_hero h3 { padding: 1em 0; margin: 0; }
+	
+	.left-column p { font-size: 115%; }
+	
+}
