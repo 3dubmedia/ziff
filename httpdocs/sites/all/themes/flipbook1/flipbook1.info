@@ -1,0 +1,23 @@
+name = Flipbook1
+description = Flipbook1
+core = 7.x
+engine = phptemplate
+
+; STYLESHEETS
+;----------------------------------------------------
+//stylesheets[all][] = css/bootstrap.min.css
+//stylesheets[all][] = css/business-casual.css
+
+; SCRIPTS
+;----------------------------------------------------
+//scripts[] = js/bootstrap.min.js
+
+regions[content] = Content
+regions[website] = Website Content
+
+; Information added by drupal.org packaging script on 2013-09-08
+version = "1"
+core = "7.x"
+project = "nexus"
+datestamp = "1378634197"
+
