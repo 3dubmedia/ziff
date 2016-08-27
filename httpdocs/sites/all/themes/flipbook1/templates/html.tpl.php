@@ -7,12 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<?php if (isset($favicon)): ?>
-	<link rel="shortcut icon" type="/sites/default/files/<?php print $favicon; ?>" />
+	<link rel="shortcut icon" type="/sites/default/files/favicons/<?php print $favicon; ?>" />
 	<?php endif; ?>
 	
 	<link rel="stylesheet" type="text/css" href="/<?php print path_to_theme(); ?>/css/jquery.jscrollpane.custom.css" />
 	<link rel="stylesheet" type="text/css" href="/<?php print path_to_theme(); ?>/css/bookblock.css" />
-	<link rel="stylesheet" type="text/css" href="/<?php print path_to_theme(); ?>/css/custom_fblite_BRAND_PROJECT.css" />
+	<link rel="stylesheet" type="text/css" href="/<?php print path_to_theme(); ?>/css/custom_default.css" />
 	<link rel="stylesheet" type="text/css" href="/<?php print path_to_theme(); ?>/css/font-awesome.css" />
 	<link rel="stylesheet" type="text/css" href="/<?php print path_to_theme(); ?>/css/font-awesome.min.css" />
 	
