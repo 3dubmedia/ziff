@@ -1,9 +1,5 @@
 	
 	<?php
-	function removePWrapper($s){
-		//$str = preg_replace('!^<p>(.*?)</p>$!i', '$1', $s);
-		return $s;
-	}
 	
 	$logoPath = "/sites/default/files/logos/";
 	$menuLogoPath = "/sites/default/files/menu_logos/";
@@ -111,10 +107,10 @@
                     $thisEnt = entity_load('field_collection_item',array($entID));
                     //print_r($thisEnt);
                     if (isset($thisEnt[$entID]->field_hero_image['und'])){ $items[$i]['field_image'] = $thisEnt[$entID]->field_hero_image['und'][0]['node']->field_image_asset['und'][0]['filename']; }
-                    if (isset($thisEnt[$entID]->field_headline['und'])){ $items[$i]['field_headline'] = removePWrapper($thisEnt[$entID]->field_headline['und'][0]['value']); }
-					if (isset($thisEnt[$entID]->field_headline_caption['und'])){ $items[$i]['field_headline_caption'] = removePWrapper($thisEnt[$entID]->field_headline_caption['und'][0]['value']); }
-					if (isset($thisEnt[$entID]->field_title['und'])){ $items[$i]['field_title'] = removePWrapper($thisEnt[$entID]->field_title['und'][0]['value']); }
-					if (isset($thisEnt[$entID]->field_body['und'])){ $items[$i]['field_body'] = removePWrapper($thisEnt[$entID]->field_body['und'][0]['value']); }
+                    if (isset($thisEnt[$entID]->field_headline['und'])){ $items[$i]['field_headline'] = $thisEnt[$entID]->field_headline['und'][0]['value']; }
+					if (isset($thisEnt[$entID]->field_headline_caption['und'])){ $items[$i]['field_headline_caption'] = $thisEnt[$entID]->field_headline_caption['und'][0]['value']; }
+					if (isset($thisEnt[$entID]->field_title['und'])){ $items[$i]['field_title'] = $thisEnt[$entID]->field_title['und'][0]['value']; }
+					if (isset($thisEnt[$entID]->field_body['und'])){ $items[$i]['field_body'] = $thisEnt[$entID]->field_body['und'][0]['value']; }
 					
 					$j=0;
 					foreach ($thisEnt[$entID]->field_assets['und'] as $asset){
@@ -124,12 +120,12 @@
 						//print_r($thisAssetEnt);
 						if (isset($thisAssetEnt[$thisAssetID]->field_type['und'])){ $items[$i]['field_assets'][$j]['field_type'] = $thisAssetEnt[$thisAssetID]->field_type['und'][0]['value']; }
 						if (isset($thisAssetEnt[$thisAssetID]->field_set['und'])){$items[$i]['field_assets'][$j]['field_set'] = $thisAssetEnt[$thisAssetID]->field_set['und'][0]['value']; }
-						if (isset($thisAssetEnt[$thisAssetID]->field_icon_title['und'])){$items[$i]['field_assets'][$j]['field_icon_title'] = removePWrapper($thisAssetEnt[$thisAssetID]->field_icon_title['und'][0]['value']); }
-						if (isset($thisAssetEnt[$thisAssetID]->field_text['und'])){$items[$i]['field_assets'][$j]['field_text'] = removePWrapper($thisAssetEnt[$thisAssetID]->field_text['und'][0]['value']); }
-						if (isset($thisAssetEnt[$thisAssetID]->field_url['und'])){$items[$i]['field_assets'][$j]['field_url'] = removePWrapper($thisAssetEnt[$thisAssetID]->field_url['und'][0]['value']); }
+						if (isset($thisAssetEnt[$thisAssetID]->field_icon_title['und'])){$items[$i]['field_assets'][$j]['field_icon_title'] = $thisAssetEnt[$thisAssetID]->field_icon_title['und'][0]['value']; }
+						if (isset($thisAssetEnt[$thisAssetID]->field_text['und'])){$items[$i]['field_assets'][$j]['field_text'] = $thisAssetEnt[$thisAssetID]->field_text['und'][0]['value']; }
+						if (isset($thisAssetEnt[$thisAssetID]->field_url['und'])){$items[$i]['field_assets'][$j]['field_url'] = $thisAssetEnt[$thisAssetID]->field_url['und'][0]['value']; }
 						if (isset($thisAssetEnt[$thisAssetID]->field_icon_override['und'])){$items[$i]['field_assets'][$j]['field_icon_override'] = $thisAssetEnt[$thisAssetID]->field_icon_override['und'][0]['filename']; }
 						if (isset($thisAssetEnt[$thisAssetID]->field_screenshot['und'])){$items[$i]['field_assets'][$j]['field_image_asset'] = $thisAssetEnt[$thisAssetID]->field_screenshot['und'][0]['node']->field_image_asset['und'][0]['filename']; }
-						if (isset($thisAssetEnt[$thisAssetID]->field_youtube['und'])){$items[$i]['field_assets'][$j]['field_youtube'] = removePWrapper($thisAssetEnt[$thisAssetID]->field_youtube['und'][0]['value']); }
+						if (isset($thisAssetEnt[$thisAssetID]->field_youtube['und'])){$items[$i]['field_assets'][$j]['field_youtube'] = $thisAssetEnt[$thisAssetID]->field_youtube['und'][0]['value']; }
 						$j++;
 					}
 					
