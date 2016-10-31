@@ -8,7 +8,6 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 
 <?php if ($tabs): ?><div id="tabs-wrapper" class="clearfix"><?php endif; ?>
 <?php if ($tabs): ?><?php print render($tabs); ?></div><?php endif; ?>
-<?php print render($tabs2); ?>
 
 <div id="container" class="container">
 	<!-- TOC button -->
@@ -71,12 +70,9 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 					<option value=""> --------- </option>
 					<?php
 					$langs = language_list();
-					//print_r($langs);
 					$tnodes = translation_node_get_translations($node->tnid);
-					//print_r($node);print_r($tnodes);
 					if (is_array($tnodes)){
 						foreach ($tnodes as $k){
-							//print_r($k);
 							$tnLanguage = $k->language;
 							$tnNid = $k->nid;
 							$tnPath = drupal_get_path_alias('node/'.$tnNid);
@@ -104,7 +100,7 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 			foreach ($node->field_pages['und'] as $item){
 				$entID = $item['value'];
 				$thisEnt = entity_load('field_collection_item',array($entID));
-				//print_r($thisEnt);
+	
 				if (isset($thisEnt[$entID]->field_hero_image['und'])){ $items[$i]['field_image'] = $thisEnt[$entID]->field_hero_image['und'][0]['node']->field_image['und'][0]['filename']; }
 				if (isset($thisEnt[$entID]->field_headline['und'])){ $items[$i]['field_headline'] = $thisEnt[$entID]->field_headline['und'][0]['value']; }
 				if (isset($thisEnt[$entID]->field_headline_caption['und'])){ $items[$i]['field_headline_caption'] = $thisEnt[$entID]->field_headline_caption['und'][0]['value']; }
@@ -114,9 +110,7 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 				$j=0;
 				foreach ($thisEnt[$entID]->field_assets['und'] as $asset){
 					$thisAssetID = $asset['value'];
-					//print ">>>".$thisAssetID;
 					$thisAssetEnt = entity_load('field_collection_item',array($thisAssetID));
-					//print_r($thisAssetEnt);
 					if (isset($thisAssetEnt[$thisAssetID]->field_type['und'])){ $items[$i]['field_assets'][$j]['field_type'] = $thisAssetEnt[$thisAssetID]->field_type['und'][0]['value']; }
 					if (isset($thisAssetEnt[$thisAssetID]->field_set['und'])){$items[$i]['field_assets'][$j]['field_set'] = $thisAssetEnt[$thisAssetID]->field_set['und'][0]['value']; }
 					if (isset($thisAssetEnt[$thisAssetID]->field_icon_title['und'])){$items[$i]['field_assets'][$j]['field_icon_title'] = $thisAssetEnt[$thisAssetID]->field_icon_title['und'][0]['value']; }
@@ -127,7 +121,6 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 					if (isset($thisAssetEnt[$thisAssetID]->field_youtube['und'])){$items[$i]['field_assets'][$j]['field_youtube'] = $thisAssetEnt[$thisAssetID]->field_youtube['und'][0]['value']; }
 					$j++;
 				}
-				
 				$i++;
 				
 			} // END LOOP OVER PAGES ENTITY
@@ -148,7 +141,6 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 			<?php
 			$i=1;
 			foreach ($items as $thing){
-				//print_r($thing);
 				print '<div class="bb-item" id="item'.$i.'">
 					<div class="content">
 						<div class="scroller">';
@@ -210,20 +202,13 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 								foreach ($thing["field_assets"] as $assetThing){
 									
 									$thisFile="";
-									
-									//print_r($assetThing);
 									if (isset($assetThing['field_youtube'])){
-										
 										print'<div class="video shadow"><iframe src="'.$assetThing['field_youtube'].'" width="430" height="242" frameborder="0" allowfullscreen></iframe></div>';
 									} else if (isset($assetThing['field_image_asset']) ){
 										
 										$thisMediaFile = $screenshotsPath.$assetThing['field_image_asset'];
 									
 										print'<a href="'.$thisMediaFile.'" target="_blank"><img src="'.$thisMediaFile.'" alt="Image" border="0" class="scrnsht shadow" /></a>';
-									
-										
-										
-										
 									} else {
 									
 										if (isset($assetThing['field_icon_override'])){
@@ -262,7 +247,7 @@ $screenshotsPath = "/sites/default/files/screenshots/";
 										}
 									}
 								} // foreach ($thing["field_assets"] as $assetThing)
-								//print_r($socialItems);
+		
 								if (isset($socialItems)){
 									print '<!-- Social Icon Links -->
 									<header class="social_module">';
