@@ -3,7 +3,6 @@
 <head>
 	<meta name="author" content="Ziff Davis & CO-BRAND" />
 	<meta name="description" content="CLIENT CAMPAIGN SUMMARY" />
-	<meta name="keywords" content="campaign keywords, here, here, and here" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<?php if (isset($favicon)): ?>
